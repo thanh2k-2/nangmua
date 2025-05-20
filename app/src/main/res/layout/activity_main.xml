@@ -1,0 +1,508 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.view.MainActivity">
+
+    <ImageView
+        android:id="@+id/img_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#739DB3"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background_rain"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ScrollView
+        android:id="@+id/current_scroll_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/current_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                tools:ignore="RtlHardcoded">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal"
+                        tools:ignore="UselessParent">
+
+                        <ImageView
+                            android:id="@+id/favorite_list"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_gravity="left"
+                            android:layout_marginLeft="8dp"
+                            app:srcCompat="@drawable/list_24"
+                            tools:ignore="ContentDescription,ImageContrastCheck" />
+
+                        <ImageView
+                            android:id="@+id/add_location"
+                            android:layout_width="26dp"
+                            android:layout_height="26dp"
+                            android:layout_marginLeft="10dp"
+                            app:srcCompat="@drawable/no_heart_24"
+                            tools:ignore="ContentDescription,ImageContrastCheck" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/search_location"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="right"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginRight="8dp"
+                        app:srcCompat="@drawable/search_24"
+                        tools:ignore="ContentDescription,ImageContrastCheck" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="35dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Hà Nội"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tv_time_at_location"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Thứ sáu, 11 tháng 9"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="26sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <TextView
+                android:id="@+id/tv_temp_current"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="35°"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="80sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <ImageView
+                android:id="@+id/weather_icon_img"
+                android:layout_width="@dimen/w_100"
+                android:layout_height="@dimen/h_100"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/nhieu_may"
+                tools:ignore="ContentDescription,ImageContrastCheck" />
+
+
+            <TextView
+                android:id="@+id/tv_weather_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/montserrat_italic"
+                android:text="Nắng nhẹ"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="left"
+                            android:orientation="horizontal"
+                            tools:ignore="RtlHardcoded,UseCompoundDrawables">
+
+                            <ImageView
+                                android:id="@+id/imageView8"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="10dp"
+                                app:srcCompat="@drawable/brightness_24"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1"
+                                android:alpha="0.6"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="CHỈ SỐ UV "
+                                android:textColor="@color/black"
+                                tools:ignore="HardcodedText,InefficientWeight" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_uv_index"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:text="-"
+                            android:textColor="@color/black"
+                            android:textSize="34sp"
+                            tools:ignore="HardcodedText,InefficientWeight" />
+
+                        <TextView
+                            android:id="@+id/tv_uv_text"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:text="Thấp"
+                            android:textColor="@color/black"
+                            tools:ignore="HardcodedText,RtlHardcoded" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="left"
+                            android:orientation="horizontal"
+                            tools:ignore="RtlHardcoded,UseCompoundDrawables">
+
+                            <ImageView
+                                android:id="@+id/imageView10"
+                                android:layout_width="20dp"
+                                android:layout_height="20dp"
+                                android:layout_gravity="left"
+                                android:layout_marginLeft="10dp"
+                                app:srcCompat="@drawable/cloud_showers_heavy_24"
+                                tools:ignore="ContentDescription" />
+
+                            <TextView
+                                android:id="@+id/textView20"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="8dp"
+                                android:layout_weight="1"
+                                android:alpha="0.6"
+                                android:fontFamily="@font/montserrat_medium"
+                                android:text="LƯỢNG MƯA"
+                                android:textColor="@color/black"
+                                tools:ignore="HardcodedText,InefficientWeight" />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tv_precipitation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_weight="1"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:text="- mm"
+                            android:textColor="@color/black"
+                            android:textSize="34sp"
+                            tools:ignore="HardcodedText,InefficientWeight" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginBottom="20dp"
+                            android:fontFamily="@font/montserrat_medium"
+                            android:text="Hôm nay"
+                            android:textColor="@color/black"
+                            tools:ignore="HardcodedText,RtlHardcoded" />
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="10dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    tools:ignore="DisableBaselineAlignment">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/temperature"
+                            tools:ignore="ContentDescription,NestedWeights" />
+
+                        <TextView
+                            android:id="@+id/tv_real_temp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="1dp"
+                            android:layout_marginBottom="4dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="-"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text=" Cảm nhận thực tế"
+                            tools:ignore="HardcodedText" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/wind_24"
+                            tools:ignore="ContentDescription,NestedWeights" />
+
+                        <TextView
+                            android:id="@+id/tv_wind_speed"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="-"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Gió"
+                            tools:ignore="HardcodedText" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="15dp"
+                        android:layout_marginBottom="15dp"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/humidity_24"
+                            tools:ignore="ContentDescription,NestedWeights" />
+
+                        <TextView
+                            android:id="@+id/tv_relative_humidity"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="4dp"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="-"
+                            tools:ignore="HardcodedText" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="Độ ẩm"
+                            tools:ignore="HardcodedText" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Dự báo 12 giờ tới"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText,TextContrastCheck" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="10dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_forecast_12_hours"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/fragment_w12h_item" />
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:fontFamily="@font/montserrat_medium"
+                android:text="Dự báo 5 ngày tới"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                tools:ignore="HardcodedText" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="10dp"
+                app:cardCornerRadius="10dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_forecast_5_days"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:overScrollMode="never"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    tools:listitem="@layout/fragment_w5d_item" />
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
+    </ScrollView>
+
+    <ImageView
+        android:id="@+id/no_internet_img"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="8dp"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.87"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/no_internet"
+        tools:ignore="ContentDescription" />
+</androidx.constraintlayout.widget.ConstraintLayout>

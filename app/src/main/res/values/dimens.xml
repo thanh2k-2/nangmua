@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="width_weather_icon">24dp</dimen>
+    <dimen name="height_icon_weather">24dp</dimen>
+    <dimen name="h_20">20dp</dimen>
+    <dimen name="w_20">20dp</dimen>
+    <dimen name="w_100">100dp</dimen>
+    <dimen name="h_100">100dp</dimen>
+</resources>

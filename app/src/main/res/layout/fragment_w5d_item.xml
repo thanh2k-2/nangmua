@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/img_w5d_ic_weather"
+        android:layout_width="@dimen/width_weather_icon"
+        android:layout_height="@dimen/height_icon_weather"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_w5d_date"
+        app:layout_constraintEnd_toStartOf="@+id/tv_w5d_tem_min"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/guideline2"
+        app:layout_constraintTop_toTopOf="@+id/tv_w5d_date"
+        app:srcCompat="@drawable/troi_mua"
+        tools:ignore="ContentDescription,ImageContrastCheck" />
+
+    <TextView
+        android:id="@+id/tv_w5d_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="Hôm nay"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/guideline2"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="HardcodedText,TextSizeCheck" />
+
+    <TextView
+        android:id="@+id/tv_w5d_rain_probability"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="4dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="66%"
+        android:textAlignment="center"
+        android:textColor="#00B8D4"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/img_w5d_ic_weather"
+        app:layout_constraintStart_toStartOf="@+id/img_w5d_ic_weather"
+        app:layout_constraintTop_toBottomOf="@+id/img_w5d_ic_weather"
+        tools:ignore="HardcodedText,TextContrastCheck" />
+
+    <TextView
+        android:id="@+id/tv_w5d_tem_min"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="8dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="20°"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/img_w5d_ic_weather"
+        app:layout_constraintEnd_toStartOf="@+id/tv_w5d_tem_max"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/img_w5d_ic_weather"
+        app:layout_constraintTop_toTopOf="@+id/img_w5d_ic_weather"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/tv_w5d_tem_max"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="70dp"
+        android:fontFamily="@font/montserrat_medium"
+        android:text="35°"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/tv_w5d_tem_min"
+        app:layout_constraintStart_toEndOf="@+id/tv_w5d_tem_min"
+        app:layout_constraintTop_toTopOf="@+id/tv_w5d_tem_min"
+        tools:ignore="HardcodedText" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.33" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

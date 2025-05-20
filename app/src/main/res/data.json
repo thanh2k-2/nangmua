@@ -1,0 +1,354 @@
+{
+  "Headline": {
+    "EffectiveDate": "2025-05-10T01:00:00+07:00",
+    "EffectiveEpochDate": 1746813600,
+    "Severity": 3,
+    "Text": "Mưa và mưa dông cuối đêm Thứ Sáu",
+    "Category": "thunderstorm",
+    "EndDate": "2025-05-10T07:00:00+07:00",
+    "EndEpochDate": 1746835200,
+    "MobileLink": "http://www.accuweather.com/vi/vn/hanoi/353412/daily-weather-forecast/353412?unit=c",
+    "Link": "http://www.accuweather.com/vi/vn/hanoi/353412/daily-weather-forecast/353412?unit=c"
+  },
+  "DailyForecasts": [
+    {
+      "Date": "2025-05-09T07:00:00+07:00",
+      "EpochDate": 1746748800,
+      "Sun": {
+        "Rise": "2025-05-09T05:23:00+07:00",
+        "EpochRise": 1746742980,
+        "Set": "2025-05-09T18:25:00+07:00",
+        "EpochSet": 1746789900
+      },
+      "Moon": {
+        "Rise": "2025-05-09T15:42:00+07:00",
+        "EpochRise": 1746780120,
+        "Set": "2025-05-10T03:36:00+07:00",
+        "EpochSet": 1746822960,
+        "Phase": "WaxingGibbous",
+        "Age": 11
+      },
+      "Temperature": {
+        "Minimum": {
+          "Value": 24.8,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Maximum": {
+          "Value": 37.8,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "RealFeelTemperature": {
+        "Minimum": {
+          "Value": 28.7,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 44.6,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng gay gắt"
+        }
+      },
+      "RealFeelTemperatureShade": {
+        "Minimum": {
+          "Value": 28.7,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Rất ấm áp"
+        },
+        "Maximum": {
+          "Value": 41.9,
+          "Unit": "C",
+          "UnitType": 17,
+          "Phrase": "Nóng gay gắt"
+        }
+      },
+      "HoursOfSun": 4.2,
+      "DegreeDaySummary": {
+        "Heating": {
+          "Value": 0,
+          "Unit": "C",
+          "UnitType": 17
+        },
+        "Cooling": {
+          "Value": 13,
+          "Unit": "C",
+          "UnitType": 17
+        }
+      },
+      "AirAndPollen": [
+        {
+          "Name": "AirQuality",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1,
+          "Type": "Ôzôn"
+        },
+        {
+          "Name": "Grass",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Mold",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Ragweed",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "Tree",
+          "Value": 0,
+          "Category": "Tốt",
+          "CategoryValue": 1
+        },
+        {
+          "Name": "UVIndex",
+          "Value": 11,
+          "Category": "Rất có hại",
+          "CategoryValue": 5
+        }
+      ],
+      "Day": {
+        "Icon": 16,
+        "IconPhrase": "Nhiều mây, có mưa dông",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Heavy",
+        "ShortPhrase": "Mưa dông lớn",
+        "LongPhrase": "Mưa dông lớn",
+        "PrecipitationProbability": 89,
+        "ThunderstormProbability": 53,
+        "RainProbability": 89,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 13,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 60,
+            "Localized": "ĐĐB",
+            "English": "ENE"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 29.6,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 59,
+            "Localized": "ĐĐB",
+            "English": "ENE"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 13.7,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 13.7,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 2.5,
+        "HoursOfRain": 2.5,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 70,
+        "Evapotranspiration": {
+          "Value": 4.3,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 4677,
+          "Unit": "W/m²",
+          "UnitType": 33
+        },
+        "RelativeHumidity": {
+          "Minimum": 50,
+          "Maximum": 86,
+          "Average": 65
+        },
+        "WetBulbTemperature": {
+          "Minimum": {
+            "Value": 27,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 29.1,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Average": {
+            "Value": 28.1,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "WetBulbGlobeTemperature": {
+          "Minimum": {
+            "Value": 27.7,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 34.1,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Average": {
+            "Value": 31,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        }
+      },
+      "Night": {
+        "Icon": 18,
+        "IconPhrase": "Mưa",
+        "HasPrecipitation": true,
+        "PrecipitationType": "Rain",
+        "PrecipitationIntensity": "Moderate",
+        "ShortPhrase": "Đôi lúc có mưa và mưa dông",
+        "LongPhrase": "Đôi lúc có mưa và mưa dông",
+        "PrecipitationProbability": 90,
+        "ThunderstormProbability": 54,
+        "RainProbability": 90,
+        "SnowProbability": 0,
+        "IceProbability": 0,
+        "Wind": {
+          "Speed": {
+            "Value": 11.1,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 168,
+            "Localized": "NĐN",
+            "English": "SSE"
+          }
+        },
+        "WindGust": {
+          "Speed": {
+            "Value": 18.5,
+            "Unit": "km/h",
+            "UnitType": 7
+          },
+          "Direction": {
+            "Degrees": 106,
+            "Localized": "ĐĐN",
+            "English": "ESE"
+          }
+        },
+        "TotalLiquid": {
+          "Value": 6.4,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Rain": {
+          "Value": 6.4,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "Snow": {
+          "Value": 0,
+          "Unit": "cm",
+          "UnitType": 4
+        },
+        "Ice": {
+          "Value": 0,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "HoursOfPrecipitation": 3,
+        "HoursOfRain": 3,
+        "HoursOfSnow": 0,
+        "HoursOfIce": 0,
+        "CloudCover": 86,
+        "Evapotranspiration": {
+          "Value": 0.3,
+          "Unit": "mm",
+          "UnitType": 3
+        },
+        "SolarIrradiance": {
+          "Value": 30.5,
+          "Unit": "W/m²",
+          "UnitType": 33
+        },
+        "RelativeHumidity": {
+          "Minimum": 71,
+          "Maximum": 98,
+          "Average": 87
+        },
+        "WetBulbTemperature": {
+          "Minimum": {
+            "Value": 24.7,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 27,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Average": {
+            "Value": 25.7,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        },
+        "WetBulbGlobeTemperature": {
+          "Minimum": {
+            "Value": 25.2,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Maximum": {
+            "Value": 28.8,
+            "Unit": "C",
+            "UnitType": 17
+          },
+          "Average": {
+            "Value": 26.9,
+            "Unit": "C",
+            "UnitType": 17
+          }
+        }
+      },
+      "Sources": [
+        "AccuWeather"
+      ],
+      "MobileLink": "http://www.accuweather.com/vi/vn/hanoi/353412/daily-weather-forecast/353412?day=1&unit=c",
+      "Link": "http://www.accuweather.com/vi/vn/hanoi/353412/daily-weather-forecast/353412?day=1&unit=c"
+    }
+  ]
+}
