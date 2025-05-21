@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase
 import vn.thanhdz.nangmua.data.dao.LocDao
 import vn.thanhdz.nangmua.data.model.Loc
 
-@Database(entities = [Loc::class], version = 5, exportSchema = false)
+@Database(entities = [Loc::class], version = 6, exportSchema = false)
 abstract class LocRoomDatabase : RoomDatabase() {
 
     abstract fun locDao(): LocDao
