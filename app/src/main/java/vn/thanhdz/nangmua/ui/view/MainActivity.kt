@@ -63,41 +63,43 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        locDb = LocRoomDatabase.getDataBase(binding.root.context)
-        homeViewModel = HomeViewModel()
-        forecast12hViewModel = Forecast12hViewModel()
-        forecast5dViewModel = Forecast5dViewModel()
-        forecast5dAdapter = Forecast5dAdapter(mutableListOf())
-        forecast12hAdapter = Forecast12hAdapter(mutableListOf())
+        init()
+
         handler.post(refreshRunnable)
         binding.favoriteList.setOnClickListener {
             startActivity(Intent(this@MainActivity, FavoriteLocationActivity::class.java))
         }
-        checkLocation()
+
         if (isOnline()) {
             binding.noInternetImg.visibility = View.GONE
             binding.progressBar.visibility = View.VISIBLE
             setup()
+
             binding.apply {
-                locationId = intent?.getIntExtra("KEY", 0) ?: 0
-                location = intent?.getStringExtra("NAME").toString()
-                country = intent?.getStringExtra("COUNTRY").toString()
+                locationId = intent.getIntExtra("SEARCH_KEY", 0)
+                location = intent?.getStringExtra("SEARCH_NAME").toString()
+                country = intent?.getStringExtra("SEARCH_COUNTRY").toString()
+
                 if (locationId == 0 || location.isEmpty()) {
-                    locationId = intent?.getIntExtra("FAVORITE_KEY", 0) ?: 0
+                    locationId = intent.getIntExtra("FAVORITE_KEY", 0)
                     location = intent?.getStringExtra("FAVORITE_NAME").toString()
                     country = intent?.getStringExtra("FAVORITE_COUNTRY").toString()
+
                     if (locationId == 0 || location.isEmpty()) {
-                        locationId = 353412
-                        location = "Hà Nội"
-                        country = "Việt Nam"
+                        // Lấy địa điểm đầu tiên bất đồng bộ
+                        getFirstLocation()
+                    } else {
+                        checkLocation()
+                        loadWeatherData(locationId)
                     }
+                } else {
+                    checkLocation()
+                    loadWeatherData(locationId)
                 }
-                loadWeatherData(locationId)
 
                 searchLocation.setOnClickListener {
                     startActivity(Intent(this@MainActivity, LocationListActivity::class.java))
                 }
-
 
                 addLocation.setOnClickListener {
                     addLoc()
@@ -122,10 +124,34 @@ class MainActivity : AppCompatActivity() {
                 rvForecast12Hours.adapter = forecast12hAdapter
             }
         } else {
+            CoroutineScope(Dispatchers.Main).launch {
+                val loc = locDb.locDao().getFirstLocation()
+                Log.e("getFirst", "$loc")
+                if (loc != null && loc.key > 0) {
+                    locationId = loc.key
+                    location = loc.locationName
+                    binding.tvLocation.text = location
+                } else {
+                    setDefaultLocation()
+                }
+                checkLocation()
+            }
             binding.progressBar.visibility = View.GONE
             binding.noInternetImg.visibility = View.VISIBLE
             Toast.makeText(this, "Hãy kết nối internet!", Toast.LENGTH_SHORT).show()
         }
+
+
+    }
+
+
+    private fun init() {
+        locDb = LocRoomDatabase.getDataBase(binding.root.context)
+        homeViewModel = HomeViewModel()
+        forecast12hViewModel = Forecast12hViewModel()
+        forecast5dViewModel = Forecast5dViewModel()
+        forecast5dAdapter = Forecast5dAdapter(mutableListOf())
+        forecast12hAdapter = Forecast12hAdapter(mutableListOf())
     }
 
     private fun isNightNow(): Boolean {
@@ -180,11 +206,6 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadWeatherData(locationId: Int) {
-        if (!isOnline()) {
-            binding.noInternetImg.visibility = View.VISIBLE
-            binding.progressBar.visibility = View.GONE
-            return
-        }
         homeViewModel.loadDataCurrentWeather(locationId)
         forecast5dViewModel.loadDataForecast5d(locationId)
         forecast12hViewModel.loadDataForecast12h(locationId)
@@ -201,9 +222,9 @@ class MainActivity : AppCompatActivity() {
                     } else {
                         binding.addLocation.visibility = View.VISIBLE
                     }
-                } ?: run {
-                    binding.addLocation.visibility = View.VISIBLE
                 }
+                Log.e("Check", "$locationId")
+                Log.e("Check", "$loc")
             } catch (e: Exception) {
                 Log.e("MainActivity", "Error checking location", e)
                 binding.addLocation.visibility = View.VISIBLE
@@ -211,11 +232,35 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun addLoc() {
 
+    private fun getFirstLocation() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val loc = locDb.locDao().getFirstLocation()
+            Log.e("getFirst", "$loc")
+            if (loc != null && loc.key > 0) {
+                locationId = loc.key
+                location = loc.locationName
+                binding.tvLocation.text = location
+            } else {
+                setDefaultLocation()
+            }
+            checkLocation()
+            loadWeatherData(locationId)
+        }
+    }
+
+    private fun setDefaultLocation() {
+        locationId = 353412
+        location = "Hà Nội"
+        country = "Việt Nam"
+        binding.tvLocation.text = location
+    }
+
+    private fun addLoc() {
         CoroutineScope(Dispatchers.Main).launch {
             locDb.locDao()
                 .insert(Loc(key = locationId, locationName = location, country = country))
+            Log.e("AddLog", "${Loc(key = locationId, locationName = location, country = country)}")
         }
         binding.addLocation.visibility = View.GONE
     }
@@ -238,4 +283,5 @@ class MainActivity : AppCompatActivity() {
         }
         return false
     }
+
 }
