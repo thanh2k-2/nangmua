@@ -8,7 +8,6 @@ import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -133,7 +132,6 @@ class MainActivity : AppCompatActivity() {
                 rvForecast12Hours.adapter = forecast12hAdapter
             }
         } else {
-
             locationId = intent.getIntExtra("SEARCH_KEY", 0)
             location = intent?.getStringExtra("SEARCH_NAME").toString()
             country = intent?.getStringExtra("SEARCH_COUNTRY").toString()
@@ -164,7 +162,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun isNightNow(): Boolean {
-        return calendar.get(Calendar.HOUR_OF_DAY) > 15
+        return calendar.get(Calendar.HOUR_OF_DAY) > 18
     }
 
     private fun setDynamicallyWallpaper(icon: Int): Int {
@@ -207,13 +205,6 @@ class MainActivity : AppCompatActivity() {
                     rvForecast5Days.addItemDecoration(divider)
                     currentScrollView.overScrollMode = View.OVER_SCROLL_NEVER
                     weatherIconImg.setImageResource(UpLoadImg().load(it.weatherIcon))
-                } else {
-                    Toast.makeText(
-                        binding.root.context,
-                        "Không thể lấy dữ liệu thời tiết. Vui lòng thử lại sau!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    Log.e("Toast2", "duoc goi")
                 }
             }
         }
@@ -228,7 +219,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun checkLocation() {
-        CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             try {
                 val loc = locDb.locDao().find(locationId)
                 loc?.let { // Sử dụng safe call và let để tránh null
@@ -238,10 +229,7 @@ class MainActivity : AppCompatActivity() {
                         binding.addLocation.visibility = View.VISIBLE
                     }
                 }
-                Log.e("Check", "$locationId")
-                Log.e("Check", "$loc")
             } catch (e: Exception) {
-                Log.e("MainActivity", "Error checking location", e)
                 binding.addLocation.visibility = View.VISIBLE
             }
         }
@@ -249,9 +237,8 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun getFirstLocation() {
-        CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             val loc = locDb.locDao().getFirstLocation()
-            Log.e("getFirst", "$loc")
             if (loc != null && loc.key > 0) {
                 locationId = loc.key
                 location = loc.locationName
@@ -267,9 +254,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getFirstLocationOffline() {
-        CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             val loc = locDb.locDao().getFirstLocation()
-            Log.e("getFirst", "$loc")
             if (loc != null && loc.key > 0) {
                 locationId = loc.key
                 location = loc.locationName
@@ -290,9 +276,8 @@ class MainActivity : AppCompatActivity() {
 
     private fun addLoc() {
         binding.addLocation.visibility = View.GONE
-        CoroutineScope(Dispatchers.Main).launch {
+        CoroutineScope(Dispatchers.IO).launch {
             locDb.locDao().insert(Loc(key = locationId, locationName = location, country = country))
-            Log.e("AddLog", "${Loc(key = locationId, locationName = location, country = country)}")
         }
     }
 
@@ -301,6 +286,7 @@ class MainActivity : AppCompatActivity() {
         handler.removeCallbacks(refreshRunnable)
         super.onDestroy()
     }
+
 
     private fun isOnline(): Boolean {
         val cm = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -351,7 +337,6 @@ class MainActivity : AppCompatActivity() {
             if (location != null) {
                 val lat = location.latitude
                 val lon = location.longitude
-                Log.d("Location", "Lat: $lat, Lon: $lon")
 
                 // Gọi API để lấy locationKey từ lat/lon
                 getLocationKeyFromLatLon(lat, lon)
@@ -362,65 +347,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private fun getLocationKeyFromLatLon(lat: Double, lon: Double) {
         homeViewModel.locaion.observe(this) {
             if (it != null) {
                 location = it.localizedName
                 locationId = it.key.toInt()
                 country = it.country.localizedName
-            } else {
-
-                Toast.makeText(this, "Không thể lấy vị trí!", Toast.LENGTH_SHORT).show()
+                checkLocation()
+                loadWeatherData(it.key.toInt())
             }
         }
-
-        loadDataOnLocationEnabled()
         homeViewModel.getLocationKey(lat, lon)
     }
-
-
-    @SuppressLint("SetTextI18n")
-    private fun loadDataOnLocationEnabled() {
-        binding.apply {
-            homeViewModel.currentLocationWeather.observe(this@MainActivity) {
-                if (it != null) {
-                    tvLocation.text = location
-                    currentLayout.visibility = View.VISIBLE
-                    val drawable = if (isNightNow()) R.drawable.background_night
-                    else {
-                        setDynamicallyWallpaper(it.weatherIcon)
-                    }
-                    imgBg.setImageResource(drawable)
-                    tvTempCurrent.text = "${it.temperature.metric.value.toInt()}°"
-                    tvWeatherText.text = it.weatherText
-                    tvTimeAtLocation.text = DateTimeConverter().toDateTime(it.dateTime)
-                    tvUvIndex.text = it.uVIndex.toString()
-                    tvUvText.text = it.uVIndexText
-                    tvPrecipitation.text =
-                        "${it.precipitationSummary.precipitation.metric.value} ${it.precipitationSummary.precipitation.metric.unit}"
-
-                    tvRealTemp.text = "${it.realFeelTemperature.metric.value.toInt()}°"
-                    tvWindSpeed.text = "${it.wind.speed.metric.value.toInt()} km/h"
-                    tvRelativeHumidity.text = "${it.relativeHumidity} %"
-
-                    val divider =
-                        DividerItemDecoration(this@MainActivity, DividerItemDecoration.VERTICAL)
-
-                    rvForecast5Days.addItemDecoration(divider)
-                    currentScrollView.overScrollMode = View.OVER_SCROLL_NEVER
-                    weatherIconImg.setImageResource(UpLoadImg().load(it.weatherIcon))
-                } else {
-                    Toast.makeText(
-                        binding.root.context,
-                        "Không thể lấy dữ liệu thời tiết. Vui lòng thử lại sau!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-
-                    Log.e("Toast1", "duoc goi")
-                }
-            }
-        }
-    }
-
 }
